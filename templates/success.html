@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Submitted{% endblock %}
+
+{% block page_content %}
+
+
+<img src="{{ url_for('static', filename=form['image']|safe) }}" class="img-responsive img-thumbnail center-block" alt="picture">
+
+<dir class="center-block">
+{%for key in ['Name', 'Function', 'OTSR', 'Commitment'] %}
+    {% set field = 'O-STR' if key == 'OTSR' else key%}
+    <h4><b>{{ field }}:</b></h4>
+    <div class="alert alert-success" role="alert">
+        <h3>{{ form[key] }}</h3>
+    </div>
+{% endfor %}
+</dir>
+
+{% endblock %}
